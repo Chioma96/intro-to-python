@@ -1,3 +1,5 @@
+import random
+
 summer_holiday_art = '''
        \    /  \  /
           .-.-./  / -.
@@ -60,14 +62,14 @@ def prefered_continent():
 
 # Function to suggest destination
 def suggested_destination(country_list, temperature):
-    found_country = False
-    for country_info in country_list:
-        if country_info["temperature"] == temperature:
-            print(f"From all the information you have given me, I would suggest that you consider visiting {country_info['country']}.")
-            found_country = True
-
-    if not found_country:
+    matching_countries = [country_info for country_info in country_list if country_info["temperature"] == temperature]
+    
+    if matching_countries:
+        selected_country = random.choice(matching_countries)
+        print(f"From all the information you have given me, I would suggest that you consider visiting" + selected_country['country'] + ".")
+    else:
         print("Oh no, it seems there are no destinations matching your criteria.")
+
 
 # Main application loop
 while True:
@@ -123,8 +125,9 @@ elif rating == '4':
     print("Wow, a 4-star rating! Thank you for your support. We'll keep improving.")
 elif rating == '5':
     print("Fantastic! A 5-star rating! We're thrilled that you enjoyed using the app.")
-else:
-    print("Thank you for your input. We appreciate your feedback.")
+ break
+    else:
+        print("Invalid rating. Please enter a number from 1 to 5.")
 
 
 
