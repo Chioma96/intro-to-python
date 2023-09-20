@@ -125,8 +125,7 @@ elif rating == '4':
     print("Wow, a 4-star rating! Thank you for your support. We'll keep improving.")
 elif rating == '5':
     print("Fantastic! A 5-star rating! We're thrilled that you enjoyed using the app.")
- break
-    else:
+else:
         print("Invalid rating. Please enter a number from 1 to 5.")
 
 
